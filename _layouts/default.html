@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }}</title>
+  <!-- link to main stylesheet -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+<nav>
+  <ul>
+    {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+    {% for p in navigation_pages %}
+    {% if p.navigation_weight %}
+      <li>
+        <a href="{{ p.url }}" {% if p.url == page.url %}class="active"{% endif %}>
+          {{ p.subtitle }}
+        </a>
+      </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
+<div class="container">
+  {{ content }}
+</div><!-- /.container -->
+<footer>
+  <ul>
+    <li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
+    <li><a href="https://github.com/hankquinlan">github.com/hankquinlan</a></li>
+  </ul>
+</footer>
+</body>
+</html>
